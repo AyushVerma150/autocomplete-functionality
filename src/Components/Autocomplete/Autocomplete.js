@@ -6,26 +6,14 @@ import InputField from "../UI/InputField";
 import { searchFromData } from "../../Utils/utils";
 import HighlighterComponent from "../UI/Highlighter";
 
+import CONSTANTS from "../../Constants/Constants";
+
 import styles from "./Autocomplete.module.css";
 
 const Autocomplete = () => {
   //local variables
-  let content = null;
-  const data = [
-    { name: "Andrew R. Kelly", image: "https://www.placecage.com/640/360" },
-    { name: "Adrian Sanchez", image: "https://www.placecage.com/640/360" },
-    { name: "Anderson Brown", image: "https://www.placecage.com/640/360" },
-    { name: "Anna Valio", image: "https://www.placecage.com/640/360" },
-    { name: "Asha Mathews", image: "https://www.placecage.com/640/360" },
-    { name: "Alicia keys", image: "https://www.placecage.com/640/360" },
-    { name: "Alexa Dot", image: "https://www.placecage.com/640/360" },
-    { name: "Bob Squarepants", image: "https://www.placecage.com/640/360" },
-    { name: "Anonymous", image: "https://www.placecage.com/640/360" },
-    { name: "Rahat Verma", image: "https://www.placecage.com/640/360" },
-    { name: "Aman Bansal", image: "https://www.placecage.com/640/360" },
-    { name: "Piyush Goyal", image: "https://www.placecage.com/640/360" },
-    { name: "Ayush Verma", image: "https://www.placecage.com/640/360" },
-  ];
+  let searchedUserList = null;
+  const data = CONSTANTS.DATA.USER_DATA;
 
   const [searchText, setSearchText] = useState(""); // search Text from Input Field
   const [searchResult, setSearchResult] = useState([]); //Search Results Array
@@ -57,12 +45,16 @@ const Autocomplete = () => {
     setSearchResult([]);
   };
 
+  const preventPropagation = (e) => {
+    e.stopPropagation();
+  };
+
   //Displaying The Results Fetched
-  content = searchResult.map((res) => {
+  searchedUserList = searchResult.map((res) => {
     return (
       <div
-        onClick={(e) => {
-          e.stopPropagation();
+        onClick={(event) => {
+          preventPropagation(event);
           changeResultHandler(res);
         }}
         className={styles.Display}
@@ -85,20 +77,17 @@ const Autocomplete = () => {
     >
       <div className={styles.InnerDiv}>
         <InputField
-          type="text"
-          autoFocus={true}
           value={searchText}
-          placeholder="Search"
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
           onChange={changeHandler}
+          onClick={preventPropagation}
           className={styles.SearchBox}
+          type={CONSTANTS.UI.TEXT_FIELD_TYPE}
+          placeholder={CONSTANTS.UI.TEXT_FIELD_PLACEHOLDER}
         />
-        <Icon iconName="fas fa-times fa-lg" clicked={resetValues} />
+        <Icon iconName={CONSTANTS.UI.CROSS_ICON} clicked={resetValues} />
       </div>
-      {content.length >= 1 ? (
-        <div className={styles.auto}>{content}</div>
+      {searchedUserList.length >= 1 ? (
+        <div className={styles.auto}>{searchedUserList}</div>
       ) : null}
     </div>
   );

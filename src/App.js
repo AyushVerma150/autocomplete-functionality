@@ -1,12 +1,15 @@
 import "./App.css";
+
+import Updates from "./Components/Updates/Updates";
 import Autocomplete from "./Components/Autocomplete/Autocomplete";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
+      <Updates />
       <Autocomplete />
     </div>
   );
-}
+};
 
 export default App;
