@@ -23,19 +23,16 @@ const CONSTANTS = {
       { name: "Ayush Verma", image: "https://www.placecage.com/640/360" },
     ],
     UPDATES: [
-      { name: "Made UI better", reference: "" },
       {
-        name: "Enabled the Searched Text Highlight with react-highlight-words",
-        reference: "https://www.npmjs.com/package/react-highlight-words",
-      },
-      {
-        name: "Added reset functionality on click ouside of the working area",
-        reference: "",
+        name: "High performance loading and searching for huge amount of Data.",
       },
       {
         name:
-          "Working on adding react-window functionality , which will allow only those items to be fetched which are visible in the window size",
-        reference: "https://www.npmjs.com/package/react-window",
+          "Easy Integration with other components for smooth web/mobile experience.",
+      },
+      {
+        name:
+          "Built in support for Auto-fill , Highlighted Search , Custom search",
       },
     ],
   },

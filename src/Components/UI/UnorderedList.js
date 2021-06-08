@@ -8,9 +8,6 @@ const UnorderedList = ({ listData }) => {
           return (
             <div style={{ padding: "3px" }}>
               <li>{listItem.name}</li>
-              {listItem.reference.length >= 1 ? (
-                <a href={listItem.reference}>Reference</a>
-              ) : null}
             </div>
           );
         })}
