@@ -1,0 +1,25 @@
+.Highlighter {
+  height: 60px;
+  top: 20%;
+  position: absolute;
+  left: 3%;
+}
+
+.HighlighterTextStyle {
+  font-weight: bolder;
+  background-color: transparent;
+  font-size: 15px;
+}
+
+.iconStyle {
+  margin-left: 350px;
+  position: fixed;
+}
+.imageStyle {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  float: right;
+  position: absolute;
+  right: 3%;
+}
