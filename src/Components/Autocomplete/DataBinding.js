@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axiosInstance from "../../axios";
 
 import Icon from "../UI/Icon";
@@ -18,15 +18,18 @@ const DataBinding = ({ dataSource, sortOrder, searchLimit }) => {
   const [searchText, setSearchText] = useState("");
   const [userData, setUserData] = useState([]);
 
-  const getData = async (searchText) => {
-    const jsonData = await axiosInstance.get(dataSource);
-    let dataArray = bindData(jsonData, searchText, sortOrder, searchLimit);
-    setUserData(dataArray.slice(0, searchLimit));
-  };
+  const getData = useCallback(
+    async (searchText) => {
+      const jsonData = await axiosInstance.get(dataSource);
+      let dataArray = bindData(jsonData, searchText, sortOrder, searchLimit);
+      setUserData(dataArray.slice(0, searchLimit));
+    },
+    [dataSource, searchLimit, sortOrder]
+  );
 
   useEffect(() => {
     getData(searchText);
-  }, [searchText]);
+  }, [searchText, getData]);
 
   const changeHandler = (event) => {
     event.stopPropagation();

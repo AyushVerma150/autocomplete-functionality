@@ -45,6 +45,7 @@ export const bindData = (JsonData, searchText, sortOrder, searchLimit) => {
         searchText.toLowerCase()
     )
       resultArray.push(user);
+    return "";
   });
   return sortDataByName(resultArray, sortOrder);
 };
