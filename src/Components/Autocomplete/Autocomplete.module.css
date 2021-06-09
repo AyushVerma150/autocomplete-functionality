@@ -98,8 +98,7 @@
   width: 50px;
   border-radius: 50%;
   float: right;
-  position: absolute;
-  right: 3%;
+  margin-top: -55px;
 }
 
 .dataBindingImage {
@@ -196,4 +195,18 @@
 .containerDiv {
   width: 412px;
   display: flex;
+}
+
+.createListPointer {
+  cursor: pointer;
+}
+
+.createListPointer:hover {
+  background-color: lightcyan;
+}
+
+.createListDiv {
+  display: block;
+  justify-content: center;
+  align-items: center;
 }

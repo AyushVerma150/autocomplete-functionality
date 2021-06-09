@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Hint } from "react-autocomplete-hint";
 
 import Icon from "../UI/Icon";
-import Image from "../UI/Image";
 import InputField from "../UI/InputField";
+import CreateList from "./CreateList";
 import { searchFromData } from "../../Utils/utils";
-import HighlighterComponent from "../UI/Highlighter";
 
 import CONSTANTS from "../../Constants/Constants";
 
@@ -56,23 +55,15 @@ const CustomFiltering = ({ searchLimit, sort, autoSuggest, dataSource }) => {
   };
 
   //Displaying The Results Fetched
-  searchedUserList = searchResult.map((res) => {
-    return (
-      <div
-        onClick={(event) => {
-          preventPropagation(event);
-          changeResultHandler(res);
-        }}
-        className={styles.Display}
-      >
-        <HighlighterComponent
-          searchResult={searchText}
-          textToHighlight={res.name}
-        />
-        <Image src={res.image} style={styles.imageStyle} />
-      </div>
-    );
-  });
+
+  searchedUserList = (
+    <CreateList
+      data={searchResult}
+      onItemClick={changeResultHandler}
+      clicked={preventPropagation}
+      searchText={searchText}
+    />
+  );
 
   return (
     <div className={styles.DivStyle} onClick={resetValues}>
@@ -83,7 +74,7 @@ const CustomFiltering = ({ searchLimit, sort, autoSuggest, dataSource }) => {
       <hr />
       <div className={styles.InnerDiv}>
         {autoSuggest ? (
-          <Hint options={hintData} allowTabFill>
+          <Hint options={hintData} allowTabFill onClick={preventPropagation}>
             <input
               value={searchText}
               onChange={changeHandler}
@@ -105,7 +96,7 @@ const CustomFiltering = ({ searchLimit, sort, autoSuggest, dataSource }) => {
         )}
         <Icon iconName={CONSTANTS.UI.CROSS_ICON} clicked={resetValues} />
       </div>
-      {searchedUserList.length >= 1 ? (
+      {searchResult.length >= 1 ? (
         <div className={styles.auto}>{searchedUserList}</div>
       ) : null}
     </div>

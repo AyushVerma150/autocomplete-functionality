@@ -3,9 +3,9 @@ import axiosInstance from "../../axios";
 
 import Icon from "../UI/Icon";
 import Image from "../UI/Image";
+import CreateList from "./CreateList";
 import InputField from "../UI/InputField";
 import { bindData } from "../../Utils/utils";
-import HighlighterComponent from "../UI/Highlighter";
 
 import imageUrl from "../../databinding.png";
 import CONSTANTS from "../../Constants/Constants";
@@ -41,21 +41,13 @@ const DataBinding = ({ dataSource, sortOrder, searchLimit }) => {
   };
 
   if (userData.length >= 1) {
-    searchedUserList = userData.map((res) => {
-      return (
-        <div
-          onClick={(event) => {
-            preventPropagation(event);
-          }}
-          className={styles.Display}
-        >
-          <HighlighterComponent
-            searchResult={searchText}
-            textToHighlight={res.name}
-          />
-        </div>
-      );
-    });
+    searchedUserList = (
+      <CreateList
+        data={userData}
+        searchText={searchText}
+        clicked={preventPropagation}
+      />
+    );
   }
 
   const resetValues = () => {

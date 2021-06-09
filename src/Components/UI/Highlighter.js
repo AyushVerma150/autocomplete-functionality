@@ -7,7 +7,6 @@ import styles from "./UI.module.css";
 const HighlighterComponent = ({ searchResult, textToHighlight }) => {
   const hightlighterStyles = {
     color: "black",
-    fontSize: "17px",
     fontWeight: "bolder",
     backgroundColor: "transparent",
   };
