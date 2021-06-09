@@ -20,3 +20,14 @@
   right: 0px;
   width: 50%;
 }
+
+.homeDiv {
+  width: 100%;
+  background-image: linear-gradient(to bottom right, white, gray, white);
+  margin-top: -5px;
+  height: 300px;
+}
+
+.innerHomeDiv {
+  display: flex;
+}
