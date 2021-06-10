@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import Image from "../UI/Image";
 import Icon from "../UI/Icon";
 import InputField from "../UI/InputField";
-import { fetchFilteredRecords, sortDataByName } from "../../Utils/utils";
+import {
+  fetchFilteredRecords,
+  sortDataByName,
+  sliceData,
+} from "../../Utils/utils";
 
 import imageUrl from "../../grouping.png";
 import CONSTANTS from "../../Constants/Constants";
@@ -42,7 +46,7 @@ const GroupFiltering = ({ dataSource, sortOrder, searchLimit }) => {
       if (dataFetched.hasOwnProperty(key)) {
         let currentGroup = dataFetched[key];
         currentGroup = sortDataByName(currentGroup, sortOrder);
-        currentGroup = currentGroup.slice(0, searchLimit);
+        currentGroup = sliceData(currentGroup, 0, searchLimit);
         userDataList = (
           <div className={styles.outerHeader}>
             <h3 className={styles.categoryHeading}>{key}</h3>

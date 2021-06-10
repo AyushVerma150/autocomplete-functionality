@@ -5,6 +5,7 @@ import Highlighter from "react-highlight-words";
 import styles from "./UI.module.css";
 
 const HighlighterComponent = ({ searchResult, textToHighlight }) => {
+  //NOTE: highlighter style only takes an object
   const hightlighterStyles = {
     color: "black",
     fontWeight: "bolder",

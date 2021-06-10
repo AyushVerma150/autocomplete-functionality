@@ -1,3 +1,7 @@
+export const sliceData = (sliceArray, sliceStart, sliceEnd) => {
+  return sliceArray.slice(sliceStart, sliceEnd);
+};
+
 export const sortDataByName = (dataArray, sortOrder) => {
   if (sortOrder === "asc") {
     return dataArray.sort((a, b) =>
@@ -13,27 +17,12 @@ export const sortDataByName = (dataArray, sortOrder) => {
 export const searchFromData = (searchData, searchText, sort) => {
   //search on the basis of sort
 
-  if (sort === "asc") {
-    searchData.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
-    return searchData.filter(
-      (item) =>
-        item.name.toLowerCase().substring(0, searchText.length) ===
-        searchText.toLowerCase()
-    );
-  } else if (sort === "dsc") {
-    searchData.sort((a, b) => (a.name < b.name ? 1 : b.name < a.name ? -1 : 0));
-    return searchData.filter(
-      (item) =>
-        item.name.toLowerCase().substring(0, searchText.length) ===
-        searchText.toLowerCase()
-    );
-  } else {
-    return searchData.filter(
-      (item) =>
-        item.name.toLowerCase().substring(0, searchText.length) ===
-        searchText.toLowerCase()
-    );
-  }
+  searchData = sortDataByName(searchData, sort);
+  return searchData.filter(
+    (item) =>
+      item.name.toLowerCase().substring(0, searchText.length) ===
+      searchText.toLowerCase()
+  );
 };
 
 export const bindData = (JsonData, searchText, sortOrder, searchLimit) => {
@@ -60,7 +49,7 @@ export const groupByFilter = (data, groupFilter) => {
   return result;
 };
 
-const findFromResult = (professionName, result) => {
+const findFromExistingResult = (professionName, result) => {
   for (let key in result) {
     if (result.hasOwnProperty(key)) {
       if (key === professionName) {
@@ -82,7 +71,7 @@ export const fetchFilteredRecords = (groupedPersons, searchText) => {
           person.profession.toLowerCase().substring(0, searchText.length) ===
           searchText.toLowerCase()
         ) {
-          const partialResult = findFromResult(key, result);
+          const partialResult = findFromExistingResult(key, result);
           if (partialResult) {
             result = {
               ...result,

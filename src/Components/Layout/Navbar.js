@@ -6,14 +6,23 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
+import CONSTANTS from "../../Constants/Constants";
+
+import styles from "./Home.module.css";
+
 const Navbar = () => {
   return (
-    <AppBar position="static" style={{ backgroundColor: "gray" }}>
+    <AppBar position={CONSTANTS.UI.NAVBAR_POSITION} className={styles.navBar}>
       <Toolbar>
-        <IconButton edge="start" color="inherit" aria-label="menu">
+        <IconButton
+          edge={CONSTANTS.UI.ICON_BUTTON_EDGE}
+          color={CONSTANTS.UI.ICON_BUTTON_COLOR}
+        >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6">VT NETZWELT</Typography>
+        <Typography variant={CONSTANTS.UI.TYPEPOGRAPHY_H6}>
+          {CONSTANTS.NAMES.ORGANIZATION}
+        </Typography>
       </Toolbar>
     </AppBar>
   );

@@ -1,5 +1,9 @@
 const CONSTANTS = {
   UI: {
+    TYPEPOGRAPHY_H6: "h6",
+    ICON_BUTTON_EDGE: "start",
+    ICON_BUTTON_COLOR: "inherit",
+    NAVBAR_POSITION: "static",
     TEXT_FIELD_TYPE: "text",
     CROSS_ICON: "fas fa-times fa-lg",
     TEXT_FIELD_PLACEHOLDER: "e.g. Anderson Brown",
@@ -21,7 +25,25 @@ const CONSTANTS = {
     GROUP_CONTENT:
       "Group the suggestions based on logically grouped categories with individual headers.",
   },
-  NAMES: {},
+  SEARCH_LIMIT: {
+    TWO: 2,
+    FIVE: 5,
+    TEN: 10,
+  },
+  SORT_ORDER: {
+    ASCENDING: "asc",
+    DESCENDING: "dsc",
+  },
+  AUTO_SUGGEST: {
+    YES: true,
+    NO: false,
+  },
+  AXIOS: {
+    USERS_URL: "https://jsonplaceholder.typicode.com/users",
+  },
+  NAMES: {
+    ORGANIZATION: "VT NETZWELT",
+  },
   DATA: {
     USER_DATA: [
       { name: "Andrew R. Kelly", image: "https://www.placecage.com/640/360" },

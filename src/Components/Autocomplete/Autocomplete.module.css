@@ -5,8 +5,8 @@
 .SearchBox {
   border: none;
   outline: none;
-  height: 40px;
-  width: 400px;
+  height: 60px;
+  width: 412px;
   font-size: large;
   padding: 10px;
   background-color: lightgray;
@@ -17,8 +17,8 @@
 .bindingSearchBox {
   border: none;
   outline: none;
-  height: 40px;
-  width: 400px;
+  height: 60px;
+  width: 412px;
   font-size: large;
   padding: 10px;
   background-color: lightgray;
@@ -32,8 +32,8 @@
 .groupFilterBox {
   border: none;
   outline: none;
-  height: 40px;
-  width: 400px;
+  height: 60px;
+  width: 412px;
   font-size: large;
   padding: 10px;
   background-color: lightgray;

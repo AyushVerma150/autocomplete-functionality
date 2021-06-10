@@ -3,9 +3,9 @@ import axiosInstance from "../../axios";
 
 import Icon from "../UI/Icon";
 import Image from "../UI/Image";
-import CreateList from "./CreateList";
+import CreateList from "../UI/CreateList";
 import InputField from "../UI/InputField";
-import { bindData } from "../../Utils/utils";
+import { bindData, sliceData } from "../../Utils/utils";
 
 import imageUrl from "../../databinding.png";
 import CONSTANTS from "../../Constants/Constants";
@@ -22,7 +22,7 @@ const DataBinding = ({ dataSource, sortOrder, searchLimit }) => {
     async (searchText) => {
       const jsonData = await axiosInstance.get(dataSource);
       let dataArray = bindData(jsonData, searchText, sortOrder, searchLimit);
-      setUserData(dataArray.slice(0, searchLimit));
+      setUserData(sliceData(dataArray, 0, searchLimit));
     },
     [dataSource, searchLimit, sortOrder]
   );
@@ -40,6 +40,12 @@ const DataBinding = ({ dataSource, sortOrder, searchLimit }) => {
     event.stopPropagation();
   };
 
+  const resetValues = () => {
+    setSearchText("");
+    setUserData([]);
+  };
+
+  //create user list
   if (userData.length >= 1) {
     searchedUserList = (
       <CreateList
@@ -50,10 +56,9 @@ const DataBinding = ({ dataSource, sortOrder, searchLimit }) => {
     );
   }
 
-  const resetValues = () => {
-    setSearchText("");
-    setUserData([]);
-  };
+  if (userData.length >= 1) {
+    searchedUserList = <div className={styles.auto}>{searchedUserList}</div>;
+  }
 
   return (
     <div onClick={resetValues}>
@@ -77,10 +82,7 @@ const DataBinding = ({ dataSource, sortOrder, searchLimit }) => {
         />
         <Icon iconName={CONSTANTS.UI.CROSS_ICON} clicked={resetValues} />
       </div>
-
-      {userData.length >= 1 ? (
-        <div className={styles.auto}>{searchedUserList}</div>
-      ) : null}
+      {searchedUserList}
     </div>
   );
 };

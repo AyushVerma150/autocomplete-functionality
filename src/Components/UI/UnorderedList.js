@@ -1,12 +1,14 @@
 import React from "react";
 
+import styles from "./UI.module.css";
+
 const UnorderedList = ({ listData }) => {
   return (
     <div>
-      <ul style={{ textAlign: "left" }}>
+      <ul className={styles.ulStyle}>
         {listData.map((listItem) => {
           return (
-            <div style={{ padding: "3px" }}>
+            <div className={styles.liStyle}>
               <li>{listItem.name}</li>
             </div>
           );

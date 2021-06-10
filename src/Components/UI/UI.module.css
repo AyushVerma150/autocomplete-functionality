@@ -32,3 +32,12 @@
   width: "50px";
   background-color: wheat;
 }
+
+.liStyle {
+  padding: 5px;
+}
+
+.ulStyle {
+  text-align: left;
+  list-style: square;
+}

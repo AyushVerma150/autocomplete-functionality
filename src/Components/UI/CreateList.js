@@ -1,16 +1,18 @@
 import React from "react";
 
-import Image from "../UI/Image";
-import HighlighterComponent from "../UI/Highlighter";
+import Image from "./Image";
+import HighlighterComponent from "./Highlighter";
 
-import styles from "./Autocomplete.module.css";
+import styles from "../Autocomplete/Autocomplete.module.css";
 
 const CreateList = ({ data, clicked, searchText, onItemClick }) => {
   const list = data.map((item) => {
     return (
       <div
         onClick={() => {
-          onItemClick(item);
+          if (onItemClick) {
+            onItemClick(item);
+          }
         }}
         className={styles.createListPointer}
       >

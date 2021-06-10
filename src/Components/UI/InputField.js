@@ -1,11 +1,11 @@
 import React from "react";
+import { Hint } from "react-autocomplete-hint";
 
-const InputField = (props) => {
+const InputField = ({ hintData, preventPropagation, ...rest }) => {
   return (
-    <div>
-      <input {...props} />
-      {props.children}
-    </div>
+    <Hint options={hintData ? hintData : []} allowTabFill preventPropagation>
+      <input {...rest} />
+    </Hint>
   );
 };
 

@@ -31,3 +31,7 @@
 .innerHomeDiv {
   display: flex;
 }
+
+.navBar {
+  background-color: gray;
+}
